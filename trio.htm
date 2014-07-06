@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Triominos calculatrice</title>
+		  <link rel="stylesheet" type="text/css" href="style.css" ></link>
+	</head>
+<body ng-app="Triominos">
+	<h1>Triominos calculatrice</h1>
+	<div ng-controller="AppController as app">
+		<ul class="colors">
+			<li ng-repeat="color in app.colors" ng-class="color.class" ng-click="app.color=color.class">{{color.score}}</li>
+		</ul>
+
+		<ul class="pieces ng-class:app.color">
+			<li ng-repeat="move in app.moves" ng-class="move.class" ng-show="app.isPieceAvailable(move.name)">
+				<h3>{{move.name}}</h3>
+				<button ng-repeat="i in [1,2,3,4,5]" ng-click="app.setColor(move.name, i)">{{i}}</button>
+			</li>
+		</ul>
+	</div>
+	<script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.14/angular.min.js'></script>
+	<script type='text/javascript' src='app.js'></script>
+</body>
+</html>

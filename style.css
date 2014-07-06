@@ -1,0 +1,18 @@
+H1{
+	color:pink;
+	background-color: #6633CC;
+	padding:15px;
+}
+
+.colors li{width:50px;display:inline-block;list-style-type: none;margin-right: 5px;text-align:center;}
+.colors .green, .green button{background-color:green;color:white;}
+.colors .orange, .orange button{background-color:orange;}
+.colors .blue, .blue button{background-color: blue;color:white;}
+
+.pieces{list-style-type: none;}
+.pieces button{display:inline-block; width:40px;margin:0px 10px 10px 0px}
+.pieces .five button{height:100px;}
+.pieces .four button{height:80px;}
+.pieces .three button{height:60px;}
+.pieces .two button{height:40px;}
+.pieces .one button{height:20px;}
