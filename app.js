@@ -22,15 +22,23 @@ triominos.controller("AppController", function(){
 
 	this.setColor= function(piece, position){
 		this.pieces[this.color][5-parseInt(piece, 10)] -= 1;
-		var i;
-		if(this.color === "green"){
-			i = 0;
-		} else if (this.color ==="orange"){
-			i=1;
-		}
-		else
-			i=2;
+		var i = getIndex(this.color);
 		this.colors[i].score += piece *position;
+		this.undo.push({
+			color:this.color,
+			piece:piece,
+			position:position,
+			label:(""+piece+"*"+position+"="+position*piece)
+		});
+	};
+
+	function getIndex(color){
+		if(color === "green"){
+			return 0;
+		} else if (color ==="orange"){
+			return 1;
+		}
+		return 2;
 	}
 
 	this.moves=[
@@ -69,8 +77,28 @@ triominos.controller("AppController", function(){
 		});
 		self.pieces[color.class] = piece;
 	});
+
+	this.undo=[];
+
+	this.undoMove = function(undoIndex){
+		undoIndex = this.undo.length-undoIndex-1;
+		var move = this.undo.splice(undoIndex, 1)[0];
+		this.pieces[move.color][5-parseInt(move.piece, 10)] += 1;
+		var i = getIndex(move.color);
+		this.colors[i].score -= move.piece * move.position;
+	}
 	
 	this.isPieceAvailable = function(piece){
 		return this.pieces[this.color][5-parseInt(piece, 10)] >0;
 	};
 });
+
+triominos.filter('reverse', function() {
+  return function(items) {
+  	var ret = [];
+  	for (var i = items.length;i>0;i--)
+  		ret.push(items[i-1]);
+    return ret;
+  };
+});
+

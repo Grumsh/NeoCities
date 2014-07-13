@@ -9,8 +9,14 @@ H1{
 .colors .orange, .orange button{background-color:orange;}
 .colors .blue, .blue button{background-color: blue;color:white;}
 
+.log .green{color:green;}
+.log .orange{color:orange;}
+.log .blue{color:blue;}
+.log {position:absolute; left:380px;top:90px;}
+.log li{margin-top:7px;}
+
 .pieces{list-style-type: none;}
-.pieces button{display:inline-block; width:40px;margin:0px 10px 10px 0px}
+.pieces button{display:inline-block; width:60px;margin:0px 10px 10px 0px}
 .pieces .five button{height:100px;}
 .pieces .four button{height:80px;}
 .pieces .three button{height:60px;}
